@@ -8,6 +8,7 @@ cursor = conexao.cursor()
 #     CREATE TABLE usuario(
 #         id_usuario INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
 #         nome TEXT NOT NULL,
+#         senha_hash BLOB NOT NULL,
 #         cargo TEXT NOT NULL
 #     )
 # """)
@@ -28,11 +29,6 @@ cursor = conexao.cursor()
 # """)
 
 # cursor.execute("""
-    # INSERT INTO usuario
-    # (nome, cargo) VALUES ('Henrique', 'ADM')
-# """)
-# 
-# cursor.execute("""
     # INSERT INTO produto
     # (no_produto, vl_produto) VALUES ('Arroz', 19.90)
 # """)
@@ -42,9 +38,15 @@ cursor = conexao.cursor()
     # (no_produto, vl_produto) VALUES ('Feijão', 28.50)
 # """)
 
+# cursor.execute("""
+#     INSERT INTO carrinho
+#     (id_usuario, id_produto) VALUES (1, 1)
+# """)
+
 cursor.execute("""
-    INSERT INTO carrinho
-    (id_usuario, id_produto) VALUES (1, 1)
+    UPDATE usuario
+    SET cargo = 'ADM'
+    WHERE id_usuario = 1
 """)
 
 conexao.commit()
